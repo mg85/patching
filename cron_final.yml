@@ -9,7 +9,7 @@
       day: "*"
       month: "*"
       weekday: 6
-      job: sudo purge-old-kernels -y
+      job: purge-old-kernels -y
 
 
    - name: "Cronjob Entry 1"
