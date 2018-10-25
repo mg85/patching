@@ -1,0 +1,25 @@
+---
+- hosts: group1
+  tasks:
+   - name: "Cronjob Entry"
+     cron:
+      name: Purge old kernels - Ubuntu
+      minute: 0
+      hour: 0
+      day: "*"
+      month: "*"
+      weekday: 6
+      job: sudo purge-old-kernels -y
+
+
+   - name: "Cronjob Entry 1"
+     cron:
+      name: Remove dependencies that are no longer required
+      minute: 15
+      hour: 0
+      day: "*"
+      month: "*"
+      weekday: 6
+      job: apt-get autoremove --purge -y
+
+

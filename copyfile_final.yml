@@ -1,0 +1,8 @@
+---
+
+- hosts: group1
+  tasks:
+    - copy:
+        src: /etc/apt/apt.conf.d/20auto-upgrades
+        dest: /etc/apt/apt.conf.d/
+  become: yes
