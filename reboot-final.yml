@@ -10,20 +10,20 @@
   serial: 1
   ignore_errors: True
   tasks:
-#   - name: reboot | {{ inventory_hostname }} check reboot need
-#     shell: "[ -f /var/run/reboot-required ]"
-#     failed_when: False
-#     register: reboot_required
-#     changed_when: reboot_required.rc == 0
+   - name: reboot | {{ inventory_hostname }} check reboot need
+     shell: "[ -f /var/run/reboot-required ]"
+     failed_when: False
+     register: reboot_required
+     changed_when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} initiate
      ignore_errors: True
      shell: "sleep 5 && /sbin/reboot"
      async: 1
-#     when: reboot_required.rc == 0
+     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} sleeping
      pause: >
        seconds=60
-#     when: reboot_required.rc == 0
+     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} polling
      local_action: >
        wait_for host={{ inventory_hostname }}
@@ -31,8 +31,8 @@
        port=22
        delay=60
      become: false
-#     when: reboot_required.rc == 0
+     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} settling
      pause: >
        seconds=60
-#     when: reboot_required.rc == 0
+     when: reboot_required.rc == 0
