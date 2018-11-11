@@ -22,17 +22,17 @@
 #     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} sleeping
      pause: >
-       seconds=10
+       seconds=60
 #     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} polling
      local_action: >
        wait_for host={{ inventory_hostname }}
        state=started
        port=22
-       delay=15
+       delay=60
      become: false
 #     when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} settling
      pause: >
-       seconds=15
+       seconds=60
 #     when: reboot_required.rc == 0
