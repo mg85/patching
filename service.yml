@@ -1,0 +1,8 @@
+---
+
+- hosts: group1
+  tasks:
+  - name: Ansible systemd service example
+    systemd:
+      name: sudo service platform-agent-service status
+      state: restarted
