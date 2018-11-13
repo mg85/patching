@@ -1,6 +1,6 @@
 ---
 
-- hosts: group1
+- hosts: AWSKafka
   tasks:
   - name: Ansible systemd service example
     systemd:
