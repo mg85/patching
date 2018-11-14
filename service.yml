@@ -4,5 +4,5 @@
   tasks:
   - name: Ansible systemd service example
     systemd:
-      name: sudo service platform-agent-service status
+      name: sudo sysytemctl restart platform-agent-service
       state: restarted
