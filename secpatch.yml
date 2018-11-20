@@ -2,6 +2,6 @@
 
 - hosts: all
   tasks:
-  - name: Enable Auto Security patches
+  - name: Enable Auto Security patches for Ubuntu
     command: sudo apt install unattended-upgrades
   
