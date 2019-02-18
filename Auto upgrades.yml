@@ -7,8 +7,10 @@
      apt:
        name: unattended-upgrades
        state: absent
+       autoclean: yes
+#       autoremove: yes
 
-#   - name: Install "unattended-upgrades" package
-#     apt:
-#       name: unattended-upgrades
-#       state: present
+   - name: Install "unattended-upgrades" package
+     apt:
+       name: unattended-upgrades
+       state: present
