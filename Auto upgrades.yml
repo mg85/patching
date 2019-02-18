@@ -8,7 +8,7 @@
        name: unattended-upgrades
        state: absent
 
-   - name: Install "unattended-upgrades" package
-     apt:
-       name: unattended-upgrades
-       state: present
+#   - name: Install "unattended-upgrades" package
+#     apt:
+#       name: unattended-upgrades
+#       state: present
