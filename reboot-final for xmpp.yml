@@ -1,0 +1,38 @@
+---
+
+# add the excluded items from above here to ease the
+# sequenced rebooting. Wait for SSH availability then
+# sleep for 30 seconds to make sure processes have settled.
+#
+- hosts: all
+  gather_facts: false
+  become: yes
+  serial: 1
+  ignore_errors: True
+  tasks:
+#   - name: reboot | {{ inventory_hostname }} check reboot need
+#     shell: "[ -f /var/run/reboot-required ]"
+#     failed_when: False
+#     register: reboot_required
+#     changed_when: reboot_required.rc == 0
+   - name: reboot | {{ inventory_hostname }} initiate
+     ignore_errors: True
+     shell: "sleep 5 && /sbin/reboot"
+     async: 1
+#     when: reboot_required.rc == 0
+   - name: reboot | {{ inventory_hostname }} sleeping
+     pause: >
+       seconds=10
+#     when: reboot_required.rc == 0
+   - name: reboot | {{ inventory_hostname }} polling
+     local_action: >
+       wait_for host={{ inventory_hostname }}
+       state=started
+       port=22
+       delay=15
+     become: false
+#     when: reboot_required.rc == 0
+   - name: reboot | {{ inventory_hostname }} settling
+     pause: >
+       seconds=15
+#     when: reboot_required.rc == 0
