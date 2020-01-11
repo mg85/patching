@@ -8,7 +8,7 @@
   gather_facts: false
   become: yes
   serial: 1
-  ignore_errors: True
+  ignore_errors: yes
   tasks:
    #- name: reboot | {{ inventory_hostname }} check reboot need
     # shell: "[ -f /var/run/reboot-required ]"
