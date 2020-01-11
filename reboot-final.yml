@@ -16,7 +16,7 @@
      #register: reboot_required
      #changed_when: reboot_required.rc == 0
    - name: reboot | {{ inventory_hostname }} initiate
-     ignore_errors: True
+     ignore_errors: yes
      shell: "sleep 5 && /sbin/reboot"
      async: 1
      #when: reboot_required.rc == 0
